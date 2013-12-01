@@ -1,7 +1,7 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.1.0.0
+ * Version 1.2.0.0
  * Last Modified:12-01-2013
  */
 
@@ -230,8 +230,9 @@ unsigned long long int lcm ( unsigned long long int a,
 
 template <class type>
 signed long long int sum( const std::vector<type>& inputVector );
-};
 /* Calculates the sum.
  *
  * inputVector must be a vector of numeric type.
  */
+};
+

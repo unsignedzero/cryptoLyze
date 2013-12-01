@@ -1,7 +1,7 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.1.0.0
+ * Version 1.2.0.0
  * Last Modified:12-01-2013
  */
 
@@ -26,6 +26,8 @@
 #include <set>
 #include <sstream>
 #include <vector>
+
+#include "sboxSupportLib.hpp"
 
 namespace zx{
 
@@ -557,6 +559,15 @@ signed long long int sum( const std::vector<type>& inputVector ){
 
   return(sumValue);
 }
+
 ///////////////////////////////////////////////////////////////////////////////
+// Fixes linking issue see http://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
+
+template unsigned int calculateOrderSbox<unsigned int>( const std::vector<unsigned int>& sboxVector );
+template long double correlation<unsigned int>( std::vector<unsigned int>& inputVectorA, const std::vector<unsigned int>& inputVectorB );
+template std::string linearRegression<unsigned int>( const std::vector<unsigned int>& inputVectorA, const std::vector<unsigned int>& inputVectorB );
+template bool isEqual<unsigned int>(const std::vector<unsigned int>& inputVectorA, const std::vector<unsigned int>& inputVectorB );
+template std::vector<unsigned int> generateInverseSbox( const std::vector<unsigned int>& sboxVector );
+template std::string sprintCycleCountSbox<unsigned int>( const std::vector<unsigned int>& sboxVector );
 
 };

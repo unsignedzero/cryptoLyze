@@ -17,6 +17,10 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+## 1.2.0 #
+* Fixing template issue.
+* At linking stage, all lib files are separately created as oppose to one giant file.
+
 ## 1.1.0 #
 * Lib files are in lib folder and statically linked in compile time.
 * Reordered includes. Preparing for static libs.

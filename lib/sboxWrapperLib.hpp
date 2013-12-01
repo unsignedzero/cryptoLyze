@@ -1,7 +1,7 @@
 /* A wrapper for sboxSupportLib that uses those functions to analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.1.0.0
+ * Version 1.2.0.0
  * Last Modified:12-01-2013
  */
 
