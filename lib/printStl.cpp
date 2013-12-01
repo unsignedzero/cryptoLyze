@@ -1,9 +1,7 @@
 /* Simple functions that print out all the values of the STL containers.
  *
- * See http://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
- *
  * Created by David Tran (unsignedzero)
- * Version 1.2.0.0
+ * Version 1.2.1.0
  * Last Modified:12-01-2013
  */
 
@@ -11,8 +9,8 @@
  #define PRINTSTL_DEBUG false
 #endif
 
-#ifndef EMPTY_STRING
- #define EMPTY_STRING ""
+#if(PRINTSTL_DEBUG==true)
+ #include <iostream>
 #endif
 
 namespace zx{

@@ -17,6 +17,10 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+## 1.2.1 #
+* Removed unneeded dependencies due to separating files.
+* Separated sboxSupportLib into three files.
+
 ## 1.2.0 #
 * Fixing template issue.
 * At linking stage, all lib files are separately created as oppose to one giant file.

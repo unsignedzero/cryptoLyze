@@ -1,7 +1,7 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.2.0.0
+ * Version 1.2.1.0
  * Last Modified:12-01-2013
  */
 
@@ -84,8 +84,9 @@ std::string sprintCycleCountSbox( const std::vector<type>& sboxVector );
 
 ///////////////////////////////////////////////////////////////////////////////
 // Permutation Number
+template <class type>
 unsigned long long int calculatePermutationNumber(
-    const std::vector<unsigned int>& inputVector );
+    const std::vector<type>& inputVector );
 /* Calculates the permutation number of an sbox.
  *
  * inputVector should be an sbox in vector form for this to make sense.
@@ -235,4 +236,6 @@ signed long long int sum( const std::vector<type>& inputVector );
  * inputVector must be a vector of numeric type.
  */
 };
+
+#include "sboxSupportLib.tpp"
 

@@ -11,6 +11,8 @@ default: sboxMain.x
 sboxMain.x: dep
 	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -L. -lsbox
 
+depend: dep
+
 dep: libsbox.a
 
 libsbox.a:
