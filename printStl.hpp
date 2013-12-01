@@ -1,8 +1,8 @@
 /* Simple functions that print out all the values of the STL containers.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.0
- * Last Modified:11-28-2013
+ * Version 1.0.0.1
+ * Last Modified:12-01-2013
  */
 
 #ifndef PRINTSTL_HPP
@@ -15,6 +15,10 @@
 #ifndef EMPTY_STRING
  #define EMPTY_STRING ""
 #endif
+
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 
 namespace zx{
 

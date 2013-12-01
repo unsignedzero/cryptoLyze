@@ -1,8 +1,8 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.0
- * Last Modified:11-28-2013
+ * Version 1.0.0.1
+ * Last Modified:12-01-2013
  */
 
 #ifndef SBOX_SUPPORT_LIB_H
@@ -21,6 +21,14 @@
 #endif
 
 #define debug if(DEBUG)
+
+#include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <iomanip>
+#include <set>
+#include <sstream>
+#include <vector>
 
 namespace zx{
 

@@ -1,8 +1,8 @@
 /* A wrapper for sboxSupportLib that uses those functions to analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.0
- * Last Modified:11-28-2013
+ * Version 1.0.0.1
+ * Last Modified:12-01-2013
  */
 
 #ifndef SBOX_WRAPPER_LIB_CPP

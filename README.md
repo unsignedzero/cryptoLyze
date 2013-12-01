@@ -17,5 +17,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Reordered includes. Preparing for static libs.
+
 ## 1.0.0 #
 * Library initially created, commented and tested.

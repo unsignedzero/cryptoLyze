@@ -1,14 +1,15 @@
 /* This program analyzes sboxes or runs symmetry tests on them.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.0
- * Last Modified:11-28-2013
+ * Version 1.0.0.1
+ * Last Modified:12-01-2013
  */
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
-#define SBOX_COLUMN_COUNT 16
+const unsigned int SBOX_COLUMN_COUNT = 16;
 #include "sboxdata256.hpp"
 
 #include "sboxWrapperLib.hpp"
