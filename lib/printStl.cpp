@@ -1,19 +1,21 @@
 /* Simple functions that print out all the values of the STL containers.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.1
+ * Version 1.1.0.0
  * Last Modified:12-01-2013
  */
 
-#ifndef PRINTSTL_CPP
-#define PRINTSTL_CPP
-
-#ifndef PRINTSTL_HPP
- #include "printStl.hpp"
- #ifndef PRINTSTL_HPP
-  #error "MISSING printStl HPP FILE"
- #endif
+#ifndef PRINTSTL_DEBUG
+ #define PRINTSTL_DEBUG false
 #endif
+
+#ifndef EMPTY_STRING
+ #define EMPTY_STRING ""
+#endif
+
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 
 namespace zx{
 
@@ -302,5 +304,3 @@ std::string sprint(
 #endif
 
 };
-
-#endif

@@ -1,7 +1,7 @@
 /* This program analyzes sboxes or runs symmetry tests on them.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.1
+ * Version 1.1.0.0
  * Last Modified:12-01-2013
  */
 
@@ -9,9 +9,11 @@
 #include <iostream>
 #include <vector>
 
-const unsigned int SBOX_COLUMN_COUNT = 16;
+#define SBOX_COLUMN_COUNT 16
 #include "sboxdata256.hpp"
 
+#include "printStl.hpp"
+#include "sboxSupportLib.hpp"
 #include "sboxWrapperLib.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -51,13 +53,13 @@ int main(){
 
   if ( userInput == "symmetry" ){
     std::cout << "Running symmetry tests" << std::endl;
-    zx::calculateSymmetry(IDENT, "Identity");
-    zx::calculateSymmetry(AES, "AES");
-    zx::calculateSymmetry(INV_AES, "Inverse_AES");
-    zx::calculateSymmetry(FRANK, "Franklin");
-    zx::calculateSymmetry(INV_FRANK, "Inverse_Franklin");
-    zx::calculateSymmetry(SMS4, "SMS4");
-    zx::calculateSymmetry(INV_SMS4, "Inverse_SMS4");
+    zx::calculateSymmetry(IDENT, "Identity", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(AES, "AES", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(INV_AES, "Inverse_AES", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(FRANK, "Franklin", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(INV_FRANK, "Inverse_Franklin", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(SMS4, "SMS4", SBOX_COLUMN_COUNT);
+    zx::calculateSymmetry(INV_SMS4, "Inverse_SMS4", SBOX_COLUMN_COUNT);
   }
   else if ( userInput == "analyze" ){
     std::cout << "Running analysis tests" << std::endl;

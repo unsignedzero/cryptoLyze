@@ -1,33 +1,10 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.1
+ * Version 1.1.0.0
  * Last Modified:12-01-2013
  */
 
-#ifndef SBOX_SUPPORT_LIB_H
-#define SBOX_SUPPORT_LIB_H
-
-#ifndef MAX_LENGTH
- #define MAX_LENGTH 3
-#endif
-
-#ifndef EMPTY_STRING
- #define EMPTY_STRING ""
-#endif
-
-#ifndef DEBUG
- #define DEBUG false
-#endif
-
-#define debug if(DEBUG)
-
-#include <algorithm>
-#include <cmath>
-#include <iostream>
-#include <iomanip>
-#include <set>
-#include <sstream>
 #include <vector>
 
 namespace zx{
@@ -117,8 +94,18 @@ unsigned long long int calculatePermutationNumber(
 ///////////////////////////////////////////////////////////////////////////////
 // Expected Value (Correlation)
 template <class type>
-inline long double correlation( const std::vector<unsigned int>& inputVectorA,
-    const std::vector<unsigned int>& inputVectorB );
+long double correlation( std::vector<type>& inputVectorA,
+    const std::vector<type>& inputVectorB );
+/* Calculate the correlation of vectors A and B.
+ *
+ * Should the lengths be unequal, we will assume the shorter length.
+ *
+ * inputVectorA, inputVectorB must be vectors of numeric type.
+ */
+
+template <class type>
+inline long double correlation( const std::vector<type>& inputVectorA,
+    const std::vector<type>& inputVectorB );
 /* Calculate the correlation of vectors A and B.
  *
  * Should the lengths be unequal, we will assume the shorter length.
@@ -248,12 +235,3 @@ signed long long int sum( const std::vector<type>& inputVector );
  *
  * inputVector must be a vector of numeric type.
  */
-
-#ifndef SBOX_SUPPORT_LIB_CPP
- #include "sboxSupportLib.cpp"
- #ifndef SBOX_SUPPORT_LIB_CPP
-  #error "sboxSupportLib.cpp missing"
- #endif
-#endif
-
-#endif

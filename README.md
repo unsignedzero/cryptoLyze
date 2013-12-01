@@ -17,6 +17,8 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+## 1.1.0 #
+* Lib files are in lib folder and statically linked in compile time.
 * Reordered includes. Preparing for static libs.
 
 ## 1.0.0 #

@@ -1,26 +1,43 @@
 /* A wrapper for sboxSupportLib that uses those functions to analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.1
+ * Version 1.1.0.0
  * Last Modified:12-01-2013
  */
 
-#ifndef SBOX_WRAPPER_LIB_CPP
-#define SBOX_WRAPPER_LIB_CPP
-
-#ifndef SBOX_WRAPPER_LIB_H
- #include "sboxWrapperLib.hpp"
- #ifndef SBOX_WRAPPER_LIB_H
-  #error "sboxWrapperLib.hpp missing"
- #endif
+#ifndef MAX_LENGTH
+ #define MAX_LENGTH 3
 #endif
 
+#ifndef EMPTY_STRING
+ #define EMPTY_STRING ""
+#endif
+
+#ifndef ROTATION_COUNT
+ #define ROTATION_COUNT 8
+#endif
+
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <vector>
+
+#include "printStl.hpp"
+#include "printStl.cpp"
+#include "sboxSupportLib.hpp"
+#include "sboxSupportLib.cpp"
+#include "sboxWrapperLib.hpp"
+
 namespace zx{
+
+  extern const std::string ROTATION_LABEL[ROTATION_COUNT];
 
 ///////////////////////////////////////////////////////////////////////////////
 void analyzeSbox( const std::vector<unsigned int>& sboxVector,
     const std::vector<unsigned int>& identSboxVector,
-    const std::string sboxName ){
+    std::string sboxName ){
 
   static unsigned int i;
   static std::ofstream fileOutput;
@@ -65,7 +82,7 @@ void analyzeSbox( const std::vector<unsigned int>& sboxVector,
       << calculatePermutationNumber(originalVectorFamily[i]) << std::endl;
     fileOutput
       << "The correlation is "
-      << correlation(originalVectorFamily[i], identSboxVector) << std::endl;
+      << correlation<unsigned int>(originalVectorFamily[i], identSboxVector) << std::endl;
     fileOutput
       << "The cycle count data is"
       << sprintCycleCountSbox(originalVectorFamily[i]) << std::endl;
@@ -78,84 +95,8 @@ void analyzeSbox( const std::vector<unsigned int>& sboxVector,
   fileOutput.close();
 }
 ///////////////////////////////////////////////////////////////////////////////
-std::vector<std::vector<unsigned int> > createSboxFamily(
-  std::vector<unsigned int> sboxVector ){
-
-  static std::vector<std::vector<unsigned int> > outputVector;
-  static std::vector<unsigned int> tempOutputVector;
-  static signed int i, j, vectorLength, sqrtvectorLength;
-
-  // Assume input is sbox or vector whom size is n^2
-
-  vectorLength = sboxVector.size();
-  sqrtvectorLength = (unsigned int) sqrt( (double) vectorLength );
-
-  outputVector.clear();
-  tempOutputVector.clear();
-
-  // Default
-  outputVector.push_back(sboxVector);
-
-  // 90 Degrees
-  for( i = sqrtvectorLength - 1 ; i >= 0; --i )
-    for( j = 0 ; j < sqrtvectorLength ; ++j )
-      tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // 180 Degrees
-  for( i = vectorLength - 1 ; i >= 0; --i )
-    tempOutputVector.push_back(sboxVector[i]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // 270 Degrees
-  for( i = 0 ; i < sqrtvectorLength ; ++i )
-    for( j = sqrtvectorLength - 1 ; j >= 0 ; --j )
-      tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // Symmetry (x)
-  for( j = sqrtvectorLength - 1 ; j >= 0; --j )
-    for( i = 0 ; i < sqrtvectorLength ; ++i )
-     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // Symmetry (y)
-  for( j = 0 ; j < sqrtvectorLength ; ++j )
-    for( i = sqrtvectorLength - 1 ; i >= 0; --i )
-     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // Symmetry (\)
-  for( i = 0 ; i < sqrtvectorLength ; ++i )
-    for( j = 0 ; j < sqrtvectorLength ; ++j )
-     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  // Symmetry (/)
-  for( i = sqrtvectorLength - 1 ; i >= 0; --i )
-    for( j = sqrtvectorLength - 1 ; j >= 0; --j )
-     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
-
-  outputVector.push_back(tempOutputVector);
-  tempOutputVector.clear();
-
-  return outputVector;
-}
-///////////////////////////////////////////////////////////////////////////////
 void calculateSymmetry( const std::vector<unsigned int>& sboxVector,
-    const std::string sboxName ){
+    std::string sboxName, unsigned int columnCount ){
 
   static unsigned int i;
   static std::ofstream fileOutput;
@@ -197,16 +138,16 @@ void calculateSymmetry( const std::vector<unsigned int>& sboxVector,
       cummulativeCount +=1;
       fileOutputReorderBuffer
         << "The " << ROTATION_LABEL[i] << " sboxes are the same.\n"
-        << sprintSbox(originalVectorFamily[i], "Sbox", SBOX_COLUMN_COUNT, 2)
+        << sprintSbox(originalVectorFamily[i], "Sbox", columnCount, 2)
         << std::endl;
     }
     else{
       fileOutputReorderBuffer
         << "The " << ROTATION_LABEL[i] << " sboxes are NOT the same.\n"
         << sprintSbox(originalVectorFamily[i],
-            "OriginalSbox", SBOX_COLUMN_COUNT, 2) << '\n'
+            "OriginalSbox", columnCount, 2) << '\n'
         << sprintSbox(inverseVectorFamily[i],
-            "InverseSbox", SBOX_COLUMN_COUNT, 2) << std::endl;
+            "InverseSbox", columnCount, 2) << std::endl;
     }
   }
 
@@ -220,6 +161,93 @@ void calculateSymmetry( const std::vector<unsigned int>& sboxVector,
   fileOutput.close();
 }
 ///////////////////////////////////////////////////////////////////////////////
-};
+std::vector<std::vector<unsigned int> > createSboxFamily(
+  const std::vector<unsigned int> & sboxVector ){
 
-#endif
+  static std::vector<std::vector<unsigned int> > outputVector;
+  static std::vector<unsigned int> tempOutputVector;
+  static signed int i, j, vectorLength, sqrtvectorLength;
+
+  // Assume input is sbox or vector whom size is n^2
+
+  vectorLength = sboxVector.size();
+  sqrtvectorLength = (unsigned int) sqrt( (double) vectorLength );
+
+  outputVector.clear();
+  tempOutputVector.clear();
+
+  // Default
+  outputVector.push_back(sboxVector);
+
+  // 90 Degrees
+  for( i = sqrtvectorLength - 1 ; i >= 0; --i ){
+    for( j = 0 ; j < sqrtvectorLength ; ++j ){
+      tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+    }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // 180 Degrees
+  for( i = vectorLength - 1 ; i >= 0; --i ){
+    tempOutputVector.push_back(sboxVector[i]);
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // 270 Degrees
+  for( i = 0 ; i < sqrtvectorLength ; ++i ){
+    for( j = sqrtvectorLength - 1 ; j >= 0 ; --j ){
+      tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+    }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // Symmetry (x)
+  for( j = sqrtvectorLength - 1 ; j >= 0; --j ){
+    for( i = 0 ; i < sqrtvectorLength ; ++i ){
+     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+   }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // Symmetry (y)
+  for( j = 0 ; j < sqrtvectorLength ; ++j ){
+    for( i = sqrtvectorLength - 1 ; i >= 0; --i ){
+     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+   }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // Symmetry (\)
+  for( i = 0 ; i < sqrtvectorLength ; ++i ){
+    for( j = 0 ; j < sqrtvectorLength ; ++j ){
+     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+   }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  // Symmetry (/)
+  for( i = sqrtvectorLength - 1 ; i >= 0; --i ){
+    for( j = sqrtvectorLength - 1 ; j >= 0; --j ){
+     tempOutputVector.push_back(sboxVector[i+sqrtvectorLength*j]);
+   }
+  }
+
+  outputVector.push_back(tempOutputVector);
+  tempOutputVector.clear();
+
+  return outputVector;
+}
+///////////////////////////////////////////////////////////////////////////////
+};

@@ -1,19 +1,31 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.0.0.1
+ * Version 1.1.0.0
  * Last Modified:12-01-2013
  */
 
-#ifndef SBOX_SUPPORT_LIB_CPP
-#define SBOX_SUPPORT_LIB_CPP
-
-#ifndef SBOX_SUPPORT_LIB_H
- #include "sboxSupportLib.hpp"
- #ifndef SBOX_SUPPORT_LIB_H
-  #error "sboxSupportLib.hpp missing"
- #endif
+#ifndef MAX_LENGTH
+ #define MAX_LENGTH 3
 #endif
+
+#ifndef EMPTY_STRING
+ #define EMPTY_STRING ""
+#endif
+
+#ifndef DEBUG
+ #define DEBUG false
+#endif
+
+#define debug if(DEBUG)
+
+#include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <iomanip>
+#include <set>
+#include <sstream>
+#include <vector>
 
 namespace zx{
 
@@ -266,26 +278,34 @@ unsigned long long int calculatePermutationNumber(
 ///////////////////////////////////////////////////////////////////////////////
 // Expected Value (Correlation)
 template <class type>
-inline long double correlation( const std::vector<type>& inputVectorX,
-    const std::vector<type>& inputVectorY){
-  return (covariance(inputVectorX, inputVectorY))/
-          sqrt(variance(inputVectorX)*variance(inputVectorY));
+inline long double correlation( std::vector<type>& inputVectorA,
+    const std::vector<type>& inputVectorB){
+  const std::vector <type> constInputVectorA = inputVectorA;
+
+  return correlation(constInputVectorA, inputVectorB);
 }
 
 template <class type>
-long double covariance( const std::vector<type>& inputVectorX,
-    const std::vector<type>& inputVectorY ){
+inline long double correlation( const std::vector<type>& inputVectorA,
+    const std::vector<type>& inputVectorB){
+  return (covariance(inputVectorA, inputVectorB))/
+          sqrt(variance(inputVectorA)*variance(inputVectorB));
+}
+
+template <class type>
+long double covariance( const std::vector<type>& inputVectorA,
+    const std::vector<type>& inputVectorB ){
 
   static unsigned long long int i, vectorLength;
   static long double result, meanX, meanY;
 
-  vectorLength = std::min( inputVectorX.size(), inputVectorY.size() );
-  meanX = mean(inputVectorX);
-  meanY = mean(inputVectorY);
+  vectorLength = std::min( inputVectorA.size(), inputVectorB.size() );
+  meanX = mean(inputVectorA);
+  meanY = mean(inputVectorB);
   result = 0.0;
 
   for( i = 0 ; i < vectorLength ; i++ ){
-    result += (inputVectorX[i] - meanX) * (inputVectorY[i] - meanY);
+    result += (inputVectorA[i] - meanX) * (inputVectorB[i] - meanY);
   }
 
   return(result);
@@ -420,10 +440,10 @@ unsigned long long int binGcd( unsigned long long int a,
   }
   // Both are not even
   else if ( a > b ){
-    return gcd ( b, (a-b)>>1);
+    return binGcd ( b, (a-b)>>1);
   }
   else{
-    return gcd ( a, (a-b)>>1);
+    return binGcd ( a, (a-b)>>1);
   }
 }
 
@@ -540,4 +560,3 @@ signed long long int sum( const std::vector<type>& inputVector ){
 ///////////////////////////////////////////////////////////////////////////////
 
 };
-#endif
