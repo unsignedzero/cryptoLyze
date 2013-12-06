@@ -17,6 +17,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Bugfix: Filename mismatch.
 * Adding include location in make and removing folding path in sboxMain.
 * Setting Travis-CI to default only run make, as autotools is not used.
 * Testing Travis-CI tests. Commits after this might be deleted that they involve
