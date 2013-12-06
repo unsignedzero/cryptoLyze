@@ -17,9 +17,9 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
-
-* Testing Travis-Ci tests. Commits after this might be deleted that they involve
-  checking Travis-Ci and making sure the tests run correctly.
+* Setting Travis-CI to default only run make, as autotools is not used.
+* Testing Travis-CI tests. Commits after this might be deleted that they involve
+  checking Travis-CI and making sure the tests run correctly.
 * Make test will run through both tests.
 * sboxMain can read from args passed in.
 * Creating test option for make.
