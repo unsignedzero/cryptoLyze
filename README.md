@@ -17,6 +17,9 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Creating test option for make.
+* Moved data.h files into data directory.
+
 ## 1.2.1 #
 * Removed unneeded dependencies due to separating files.
 * Separated sboxSupportLib into three files.

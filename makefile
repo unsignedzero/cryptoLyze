@@ -8,8 +8,8 @@ LIBDIR= ./lib/
 
 default: sboxMain.x
 
-sboxMain.x: dep
-	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -L. -lsbox
+clean:
+	rm -rvf *.a *.o *.out *.x
 
 depend: dep
 
@@ -19,5 +19,7 @@ libsbox.a:
 	$(CCC) $(CCFLAGS) -c $(LIBDIR)*.cpp
 	ar rcs libsbox.a *.o
 
-clean:
-	rm -rvf *.a *.o *.out *.x
+sboxMain.x: dep
+	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -L. -lsbox
+
+test: sboxMain.x

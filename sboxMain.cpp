@@ -1,8 +1,8 @@
 /* This program analyzes sboxes or runs symmetry tests on them.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.1.0.0
- * Last Modified:12-01-2013
+ * Version 1.1.0.1
+ * Last Modified:12-06-2013
  */
 
 #include <algorithm>
@@ -10,7 +10,7 @@
 #include <vector>
 
 #define SBOX_COLUMN_COUNT 16
-#include "sboxdata256.hpp"
+#include "data/sboxdata256.hpp"
 
 #include "printStl.hpp"
 #include "sboxSupportLib.hpp"
