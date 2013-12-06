@@ -17,7 +17,7 @@
 #include "sboxWrapperLib.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
-int main(){
+int main(int argc, char * argv[]){
 
   static std::string userInput;
   static unsigned long long int i;
@@ -45,11 +45,17 @@ int main(){
      IDENT.push_back(i);
   }
 
-  std::cout << "Do you want to analyze the sbox or run symmetry tests?"
-    << std::endl;
-  std::cin >> userInput;
-  std::transform(userInput.begin(), userInput.end(),
-      userInput.begin(), ::tolower);
+  if ( argc >= 1 ){
+    std::cout << "Reading from command line input" << std::endl;
+    userInput = argv[1];
+  }
+  else{
+    std::cout << "Do you want to analyze the sbox or run symmetry tests?"
+      << std::endl;
+    std::cin >> userInput;
+    std::transform(userInput.begin(), userInput.end(),
+        userInput.begin(), ::tolower);
+  }
 
   if ( userInput == "symmetry" ){
     std::cout << "Running symmetry tests" << std::endl;

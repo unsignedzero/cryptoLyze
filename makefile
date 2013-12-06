@@ -23,3 +23,6 @@ sboxMain.x: dep
 	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -L. -lsbox
 
 test: sboxMain.x
+	./sboxMain.x symmetry
+	./sboxMain.x analyze
+	make clean

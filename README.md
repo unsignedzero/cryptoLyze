@@ -17,6 +17,11 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+
+* Testing Travis-Ci tests. Commits after this might be deleted that they involve
+  checking Travis-Ci and making sure the tests run correctly.
+* Make test will run through both tests.
+* sboxMain can read from args passed in.
 * Creating test option for make.
 * Moved data.h files into data directory.
 
