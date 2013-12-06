@@ -20,7 +20,7 @@ libsbox.a:
 	ar rcs libsbox.a *.o
 
 sboxMain.x: dep
-	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -L. -lsbox
+	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
 
 test: sboxMain.x
 	./sboxMain.x symmetry
