@@ -1,4 +1,4 @@
-# cryptoLyze #
+# cryptoLyze [![Build status:Can't load apt.travis-ci.org](https://api.travis-ci.org/unsignedzero/cryptoLyze.png?branch=master)](https://travis-ci.org/unsignedzero/cryptoLyze)
 
 A small support library created to analyze sboxes.
 
@@ -16,6 +16,8 @@ Created by David Tran (unsignedzero)
 * * * *
 
 ## Version/Changelog #
+
+* Added travis-ci test logo to README.
 
 ## 1.3.0 #
 * Bugfix: Values of InverseSbox need to be decremented by 1.
