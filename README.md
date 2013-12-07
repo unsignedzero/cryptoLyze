@@ -17,6 +17,8 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Make file removes output files now after completion.
+* Restored static keyword that was moved.
 * Added travis-ci test logo to README.
 
 ## 1.3.0 #

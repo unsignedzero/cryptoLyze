@@ -123,7 +123,7 @@ std::vector<type> calculateCycleCountSbox(
     const std::vector<type>& sboxVector){
 
   static unsigned int vectorLength, i;
-  std::vector<bool> hasVisitedNode;
+  static std::vector<bool> hasVisitedNode;
 
   static unsigned short currentPos, currentCycleCount;
   static std::set<type> storeUniqueCycleCountValue;

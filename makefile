@@ -11,6 +11,7 @@ default: sboxMain.x
 
 clean:
 	rm -rvf *.a *.o *.out *.x
+	rm -rvf output*
 
 depend: dep
 
