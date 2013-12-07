@@ -59,7 +59,8 @@ std::vector<type> applyPermutation( const std::vector<type>& pboxVector,
 
 template <class type>
 unsigned int calculateOrderSbox( const std::vector<type>& sboxVector ){
-  return lcm( calculateCycleCountSbox(sboxVector) );
+	return 1;
+  //return lcm( calculateCycleCountSbox(sboxVector) );
 }
 
 template <class type>
@@ -119,16 +120,16 @@ std::vector<type> generateInverseSbox( const std::vector<type>& sboxVector ){
 ///////////////////////////////////////////////////////////////////////////////
 // Cycle
 template <class type>
-std::vector<unsigned long long int> calculateCycleCountSbox(
+std::vector<type> calculateCycleCountSbox(
     const std::vector<type>& sboxVector){
 
   static unsigned int vectorLength, i;
-  static std::vector<bool> hasVisitedNode;
+  std::vector<bool> hasVisitedNode;
 
   static unsigned short currentPos, currentCycleCount;
   static std::set<type> storeUniqueCycleCountValue;
 
-  static std::vector<unsigned long long int> outputVector;
+  static std::vector<type> outputVector;
   static typename std::set<type>::iterator currentLocation, lastLocation;
 
   vectorLength = sboxVector.size();

@@ -66,7 +66,7 @@ std::vector<type> generateInverseSbox( const std::vector<type>& sboxVector );
 ///////////////////////////////////////////////////////////////////////////////
 // Cycle
 template <class type>
-std::vector<unsigned long long int> calculateCycleCountSbox(
+std::vector<type> calculateCycleCountSbox(
     const std::vector<type>& sboxVector );
 /* Calculates the cycle counts of an sbox vector. Duplicate values are
  * ignored in this case.

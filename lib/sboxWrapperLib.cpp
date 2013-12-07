@@ -72,9 +72,11 @@ void analyzeSbox( const std::vector<unsigned int>& sboxVector,
       << "\n\nLooking at " << ROTATION_LABEL[i] << '\n'
       << "The vector is\n"
       << sprintSbox(originalVectorFamily[i]) << '\n' << std::endl;
+      /*
     fileOutput
       << "The order of the sbox is "
       << calculateOrderSbox(originalVectorFamily[i]) << std::endl;
+      */
     fileOutput
       << "The permutation number is "
       << calculatePermutationNumber(originalVectorFamily[i]) << std::endl;
