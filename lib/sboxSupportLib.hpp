@@ -1,8 +1,8 @@
 /* A collection of support functions that together, analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.2.1.0
- * Last Modified:12-01-2013
+ * Version 1.2.2.0
+ * Last Modified:12-0k-2013
  */
 
 #include <vector>

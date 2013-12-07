@@ -1,8 +1,8 @@
 /* A wrapper for sboxSupportLib that uses those functions to analyze an sbox.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.2.0.0
- * Last Modified:12-01-2013
+ * Version 1.2.1.0
+ * Last Modified:12-06-2013
  */
 
 #ifndef MAX_LENGTH
@@ -72,11 +72,9 @@ void analyzeSbox( const std::vector<unsigned int>& sboxVector,
       << "\n\nLooking at " << ROTATION_LABEL[i] << '\n'
       << "The vector is\n"
       << sprintSbox(originalVectorFamily[i]) << '\n' << std::endl;
-      /*
     fileOutput
       << "The order of the sbox is "
       << calculateOrderSbox(originalVectorFamily[i]) << std::endl;
-      */
     fileOutput
       << "The permutation number is "
       << calculatePermutationNumber(originalVectorFamily[i]) << std::endl;

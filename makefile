@@ -1,5 +1,6 @@
 # Used to generate the libs and the executable.
 # Created by David Tran (unsignedzero)
+# Last Modified: 12-06-2013
 
 CCC=g++
 CCFLAGS=-O3 -Wall -Wextra -g
@@ -22,7 +23,6 @@ libsbox.a:
 sboxMain.x: dep
 	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
 
-test: sboxMain.x
-	./sboxMain.x symmetry
-	./sboxMain.x analyze
+test: clean sboxMain.x
+	./sboxMain.x test
 	make clean

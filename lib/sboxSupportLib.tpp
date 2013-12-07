@@ -3,8 +3,8 @@
  * See http://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file
  *
  * Created by David Tran (unsignedzero)
- * Version 1.2.1.0
- * Last Modified:12-01-2013
+ * Version 1.2.2.0
+ * Last Modified:12-06-2013
  */
 
 #ifndef MAX_NUMBER_LENGTH
@@ -59,8 +59,7 @@ std::vector<type> applyPermutation( const std::vector<type>& pboxVector,
 
 template <class type>
 unsigned int calculateOrderSbox( const std::vector<type>& sboxVector ){
-	return 1;
-  //return lcm( calculateCycleCountSbox(sboxVector) );
+  return lcm( calculateCycleCountSbox(sboxVector) );
 }
 
 template <class type>

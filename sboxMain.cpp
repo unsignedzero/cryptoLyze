@@ -1,7 +1,7 @@
 /* This program analyzes sboxes or runs symmetry tests on them.
  *
  * Created by David Tran (unsignedzero)
- * Version 1.1.0.3
+ * Version 1.1.1.0
  * Last Modified:12-06-2013
  */
 
@@ -57,7 +57,7 @@ int main(int argc, char * argv[]){
         userInput.begin(), ::tolower);
   }
 
-  if ( userInput == "symmetry" ){
+  if ( userInput == "symmetry" || userInput == "test" ){
     std::cout << "Running symmetry tests" << std::endl;
     zx::calculateSymmetry(IDENT, "Identity", SBOX_COLUMN_COUNT);
     zx::calculateSymmetry(AES, "AES", SBOX_COLUMN_COUNT);
@@ -67,7 +67,7 @@ int main(int argc, char * argv[]){
     zx::calculateSymmetry(SMS4, "SMS4", SBOX_COLUMN_COUNT);
     zx::calculateSymmetry(INV_SMS4, "Inverse_SMS4", SBOX_COLUMN_COUNT);
   }
-  else if ( userInput == "analyze" ){
+  if ( userInput == "analyze" || userInput == "test" ){
     std::cout << "Running analysis tests" << std::endl;
     zx::analyzeSbox(IDENT, IDENT, "Identity");
     zx::analyzeSbox(AES, IDENT, "AES");

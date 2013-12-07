@@ -17,6 +17,8 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+## 1.3.0 #
+* Bugfix: Values of InverseSbox need to be decremented by 1.
 * Bug found with function calculateOrderSbox. Fixing...
 * Bugfix: Filename mismatch.
 * Adding include location in make and removing folding path in sboxMain.
