@@ -17,6 +17,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Fixed bad commit author names in repo.
 * Make file removes output files now after completion.
 * Restored static keyword that was moved.
 * Added travis-ci test logo to README.
