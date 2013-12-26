@@ -13,10 +13,13 @@ requested and output to a file.
 
 Created by David Tran (unsignedzero)
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/unsignedzero/cryptolyze/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 * * * *
 
 ## Version/Changelog #
 
+* Added BitDeli badge.
 * Fixed bad commit author names in repo.
 * Make file removes output files now after completion.
 * Restored static keyword that was moved.
