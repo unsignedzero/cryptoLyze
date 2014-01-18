@@ -1,5 +1,6 @@
 # cryptoLyze
 [![Build status:Can't load apt.travis-ci.org](https://api.travis-ci.org/unsignedzero/cryptoLyze.png?branch=master)](https://travis-ci.org/unsignedzero/cryptoLyze)
+https://coveralls.io/r/unsignedzero/cryptoLyze
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/unsignedzero/cryptolyze/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A small support library created to analyze sboxes.
@@ -19,6 +20,10 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+## 1.4.0 #
+* Added coverall badge.
+* Tests work correctly on Travis-Ci.
+* Skipping Ci tests since no code changed. [skip ci]
 * Adding code coverage tests to run.
   cpp-coveralls failing in makefile but gcov works locally.
   No files seen on coverall site but seen locally in lcov reports.
