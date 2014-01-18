@@ -1,29 +1,37 @@
 # Used to generate the libs and the executable.
 # Created by David Tran (unsignedzero)
-# Last Modified: 12-06-2013
+# Last Modified: 01-17-2014
 
-CCC=g++
-CCFLAGS=-O3 -Wall -Wextra -g
+CXX=g++
+CCSPEEDFLAGS=-O3
+CCDEBUGFLAGS=-Wall -Wextra
+CCTESTFLAGS=-coverage -O0 -g
 
 LIBDIR= ./lib/
 
 default: sboxMain.x
-
-clean:
-	rm -rvf *.a *.o *.out *.x
-	rm -rvf output*
 
 depend: dep
 
 dep: libsbox.a
 
 libsbox.a:
-	$(CCC) $(CCFLAGS) -c $(LIBDIR)*.cpp
+	$(CXX) $(CCDEBUGFLAGS) $(CCSPEEDFLAGS) -c $(LIBDIR)*.cpp
 	ar rcs libsbox.a *.o
 
 sboxMain.x: dep
-	$(CCC) $(CCFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
+	$(CXX) $(CCSPEEDFLAGS) $(CCDEBUGFLAGS) -o $@ sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
 
-test: clean sboxMain.x
+test: clean
+	$(CXX) $(CCDEBUGFLAGS) $(CCTESTFLAGS) -c $(LIBDIR)*.cpp
+	ar rcs libsbox.a *.o
+	$(CXX) $(CCDEBUGFLAGS) $(CCTESTFLAGS) -o sboxMain.x sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
 	./sboxMain.x test
-	make clean
+
+profile: test
+	gcov */*.cpp */*.tpp */*.hpp *.cpp
+	coveralls --exclude lib --exclude tests --verbose | grep 'coverage' | grep '1'
+
+clean:
+	rm -rvf *.x *.a *.o *.out *.gcda *.gcov *.gcno
+	rm -rvf output*

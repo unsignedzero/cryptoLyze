@@ -1,4 +1,6 @@
-# cryptoLyze [![Build status:Can't load apt.travis-ci.org](https://api.travis-ci.org/unsignedzero/cryptoLyze.png?branch=master)](https://travis-ci.org/unsignedzero/cryptoLyze)
+# cryptoLyze
+[![Build status:Can't load apt.travis-ci.org](https://api.travis-ci.org/unsignedzero/cryptoLyze.png?branch=master)](https://travis-ci.org/unsignedzero/cryptoLyze)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/unsignedzero/cryptolyze/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A small support library created to analyze sboxes.
 
@@ -13,12 +15,13 @@ requested and output to a file.
 
 Created by David Tran (unsignedzero)
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/unsignedzero/cryptolyze/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
 * * * *
 
 ## Version/Changelog #
 
+* Adding code coverage tests to run.
+  cpp-coveralls failing in makefile but gcov works locally.
+  No files seen on coverall site but seen locally in lcov reports.
 * Added BitDeli badge.
 * Fixed bad commit author names in repo.
 * Make file removes output files now after completion.
