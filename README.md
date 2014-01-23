@@ -20,6 +20,8 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Bugfix: argv check starts at 2, not 1.
+
 ## 1.4.0 #
 * Added coverall badge.
 * Tests work correctly on Travis-Ci.

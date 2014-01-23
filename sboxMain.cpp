@@ -45,7 +45,7 @@ int main(int argc, char * argv[]){
      IDENT.push_back(i);
   }
 
-  if ( argc >= 1 ){
+  if ( argc >= 2 ){
     std::cout << "Reading from command line input" << std::endl;
     userInput = argv[1];
   }
