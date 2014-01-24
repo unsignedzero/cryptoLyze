@@ -7,11 +7,11 @@ A small support library created to analyze sboxes.
 
 The tool exists in three pieces, the data, the raw library and the wrapper
 around the raw library. The raw library provides all lower-level functions
-needed to do the analysis itself. The wrapper calls the functions on the sbox,
-preforms the work on the original and the seven rotations its creates, and
+needed to do the analysis itself. The wrapper calls the functions,
+perform the work on the original sbox and the seven rotations it creates, and
 prints the output to a file.
 
-There is a main that will run through the given data, preform the work
+There is a main function that will run through the given data, preform the work
 requested and output to a file.
 
 Created by David Tran (unsignedzero)
@@ -20,6 +20,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Cleaning up README.md. [skip ci]
 * Bugfix: argv check starts at 2, not 1.
 
 ## 1.4.0 #
