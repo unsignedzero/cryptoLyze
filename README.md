@@ -20,6 +20,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Added make recipe to run lcov locally. [skip ci]
 * Cleaning up README.md. [skip ci]
 * Bugfix: argv check starts at 2, not 1.
 

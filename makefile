@@ -1,6 +1,6 @@
 # Used to generate the libs and the executable.
 # Created by David Tran (unsignedzero)
-# Last Modified: 01-17-2014
+# Last Modified: 01-24-2014
 
 CXX=g++
 CCSPEEDFLAGS=-O3
@@ -28,6 +28,10 @@ test: clean
 	$(CXX) $(CCDEBUGFLAGS) $(CCTESTFLAGS) -o sboxMain.x sboxMain.cpp -I$(LIBDIR) -I./data/ -L. -lsbox
 	./sboxMain.x test
 
+lcov: clean test
+	lcov --directory . --capture --output-file app.info
+	genhtml --output-directory cov_htmp app.info
+
 profile: test
 	gcov */*.cpp */*.tpp */*.hpp *.cpp
 	coveralls --exclude lib --exclude tests --verbose | grep 'coverage' | grep '1'
@@ -35,3 +39,5 @@ profile: test
 clean:
 	rm -rvf *.x *.a *.o *.out *.gcda *.gcov *.gcno
 	rm -rvf output*
+	rm -rvf app.info
+	rm -rvf cov_htmp*
