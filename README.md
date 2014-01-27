@@ -1,6 +1,6 @@
 # cryptoLyze
 [![Build status:Can't load apt.travis-ci.org](https://api.travis-ci.org/unsignedzero/cryptoLyze.png?branch=master)](https://travis-ci.org/unsignedzero/cryptoLyze)
-https://coveralls.io/r/unsignedzero/cryptoLyze
+[![Coverage Status](https://coveralls.io/repos/unsignedzero/cryptoLyze/badge.png?branch=master)](https://coveralls.io/r/unsignedzero/cryptoLyze?branch=master)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/unsignedzero/cryptolyze/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A small support library created to analyze sboxes.
@@ -20,6 +20,7 @@ Created by David Tran (unsignedzero)
 
 ## Version/Changelog #
 
+* Bugfix: Coveralls badge placed correctly. [skip ci]
 * Added make recipe to run lcov locally. [skip ci]
 * Cleaning up README.md. [skip ci]
 * Bugfix: argv check starts at 2, not 1.
